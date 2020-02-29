@@ -4,15 +4,21 @@
   "description": "나의 첫번째 게시판 만들기",
   "main": "init.js",
   "scripts": {
-    "start": "nodemon "
+    "start": "nodemon --delay 2 --exec babel-node init.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.6",
+    "@babel/node": "^7.8.4",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.8.6",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.2",
     "nodemon": "^2.0.2"
-  }
+  },
+  "devDependencies": {}
 }
