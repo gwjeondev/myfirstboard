@@ -4,6 +4,8 @@
   "description": "나의 첫번째 게시판 만들기",
   "main": "init.js",
   "scripts": {
+    "dev:assets": "webpack --mode=development -w",
+    "bulid:assets": "webpack --mode=production",
     "start": "nodemon --delay 2 --exec babel-node init.js"
   },
   "keywords": [],
@@ -15,10 +17,38 @@
     "@babel/node": "^7.8.4",
     "@babel/polyfill": "^7.8.3",
     "@babel/preset-env": "^7.8.6",
+    "autoprefixer": "^9.7.4",
+    "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.4",
+    "css-loader": "^3.4.2",
+    "dotenv": "^8.2.0",
+    "eslint-config-prettier": "^6.10.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "helmet": "^3.21.3",
+    "method-override": "^3.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "mongoose": "^5.9.2",
-    "nodemon": "^2.0.2"
+    "morgan": "^1.9.1",
+    "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1",
+    "postcss-loader": "^3.0.0",
+    "pug": "^2.0.4",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1"
+  }
 }

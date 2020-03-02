@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="author" content="jeongeunwon")
+        meta(name="description" content="youtube cloneing")
+        meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        script(src="https://cdn.ckeditor.com/4.13.1/basic/ckeditor.js")
+        link(rel="stylesheet" href="/static/styles.css")
+        script(src="https://kit.fontawesome.com/b6783caecc.js" crossorigin="anonymous")
+        title #{siteName} | #{pageTitle}
+    body
+        include ../partials/header
+        main
+            block content
+        include ../partials/footer
+        script(src="/static/bundle.js")

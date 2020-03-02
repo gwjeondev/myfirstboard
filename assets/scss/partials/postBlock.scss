@@ -1,0 +1,24 @@
+.board {
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .board__title,
+  .board__post {
+    width: 100%;
+    padding: 5px;
+    background: #74b9ff;
+    display: grid;
+    grid-template-columns: 450px 50px 50px 100px 100px;
+    justify-items: center;
+  }
+  .board__list {
+    width: 100%;
+    .board__post {
+      background: none;
+      padding: 5px;
+      border-bottom: 2px solid;
+    }
+  }
+}

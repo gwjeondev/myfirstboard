@@ -1,0 +1,20 @@
+.home {
+  width: 100%;
+}
+.home__container {
+  max-width: 750px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .home__makebtn {
+    background: rgba(223, 230, 233, 1);
+    align-self: flex-end;
+    padding: 8px;
+    margin-bottom: 5px;
+    &:hover {
+      background: rgba(178, 190, 195, 1);
+    }
+  }
+}

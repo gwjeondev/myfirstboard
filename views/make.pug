@@ -1,0 +1,10 @@
+extends ./layout/main
+
+block content
+    section.make
+        .make__container
+            .form-container
+                form(action=`${routes.post}${routes.make}`, method="post")
+                    input(type="text" name="title" placeholder="제목을 입력하세요")#MakeTitle
+                    textarea(name="content" id="editor1")
+                    input(type="submit" value="저장")

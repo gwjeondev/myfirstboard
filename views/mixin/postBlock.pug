@@ -1,0 +1,17 @@
+mixin postBlock(post={})
+    article.board
+        .board__title
+            span 제목
+            span 댓글
+            span 추천
+            span 작성자
+            span 날짜
+        ul.board__list
+            each post in board
+                li.board__post
+                    a(href=routes.view(post.id))
+                        span=post.title
+                    span 4
+                    span 55
+                    span=post.creator.name
+                    span=post.createTime

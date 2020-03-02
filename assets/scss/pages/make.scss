@@ -1,0 +1,16 @@
+.make {
+  width: 100%;
+  .make__container {
+    max-width: 750px;
+    margin: 0 auto;
+    .form-container {
+      form {
+        width: 100%;
+        input {
+          width: 100%;
+          max-width: none;
+        }
+      }
+    }
+  }
+}

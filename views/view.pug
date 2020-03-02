@@ -1,0 +1,23 @@
+extends ./layout/main
+
+block content
+    section.post
+        .post__container
+            .post__title
+                .post__title-top
+                    .post__name
+                        span=post.title
+                    .post__popular
+                        span 
+                            i.far.fa-heart  
+                            |  좋아요 3
+                        span
+                            i.far.fa-comment 
+                            |  댓글 4
+                .post__title-bottom
+                    span=post.creator.name
+                    span=post.createTime
+            .post__content!=post.content
+            .post__func
+                a(href=`${routes.post}${routes.editBoard(post.id)}`) 수정
+                a(href=`${routes.post}${routes.delete(post.id)}`) 삭제

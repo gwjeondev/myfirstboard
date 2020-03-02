@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap");
+
+body {
+  font-family: "Noto Sans KR", serif;
+}
+
+main {
+  width: 100%;
+  margin: 30px auto;
+  min-height: 70vh;
+}
+
+button,
+input[type="submit"],
+input[type="reset"],
+a {
+  cursor: pointer;
+}
+
+form {
+  width: 100%;
+  #cke_editor1 {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
