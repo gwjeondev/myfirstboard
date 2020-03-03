@@ -1,0 +1,35 @@
+mixin reply(reply={})
+    each comment in reply.reverse()
+        //- if comment.childComment.length > 0
+        //-     +reply(comment.childComment)
+        //-         li.reply__list(id=comment._id)
+        //-             .arrow
+        //-             .reply__inner
+        //-                 .reply__title
+        //-                     .reply__creator
+        //-                         span=comment.creatorName
+        //-                         span=comment.createTime
+        //-                     if loggedUser && comment.creator.toString() === loggedUser.id
+        //-                         .reply__btn
+        //-                             span.comment__reply
+        //-                                 i.fas.fa-reply-all
+        //-                             span.comment__delete
+        //-                                 i.fas.fa-trash-alt
+        //-                 .reply__text
+        //-                     span=comment.text
+        //- else
+        //-     li.reply__list(id=comment._id)
+        //-         .arrow
+        //-         .reply__inner
+        //-             .reply__title
+        //-                 .reply__creator
+        //-                     span=comment.creatorName
+        //-                     span=comment.createTime
+        //-                 if loggedUser && comment.creator.toString() === loggedUser.id
+        //-                     .reply__btn
+        //-                         span.comment__reply
+        //-                             i.fas.fa-reply-all
+        //-                         span.comment__delete
+        //-                             i.fas.fa-trash-alt
+        //-             .reply__text
+        //-                 span=comment.text

@@ -1,5 +1,7 @@
+import passport from "passport";
 import User from "../models/User";
 import routes from "../routes";
+
 export const getEditProfile = async (req, res) => {
   if (!req.user) {
     res.redirect(routes.home);
@@ -14,7 +16,7 @@ export const postEditProfile = async (req, res) => {
   const { name, password, newpassword, newpassword2 } = req.body;
   if (password) {
     if (newpassword === newpassword2) {
-      changePassword(password, newpassword);
+      req.user.changePassword(password, newpassword);
     } else {
       res.redirect(routes.editProfile);
     }

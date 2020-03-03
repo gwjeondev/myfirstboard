@@ -21,9 +21,19 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  comment: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Comment"
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment"
+    }
+  ],
+  views: {
+    type: Number,
+    default: 0
+  },
+  likes: {
+    type: Number,
+    default: 0
   }
 });
 

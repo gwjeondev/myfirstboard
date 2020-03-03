@@ -3,12 +3,34 @@
   .make__container {
     max-width: 750px;
     margin: 0 auto;
-    .form-container {
-      form {
+    form {
+      width: 100%;
+      .make__title {
         width: 100%;
+        margin-bottom: 10px;
+        padding: 5px;
+        span {
+          margin-right: 10px;
+        }
         input {
-          width: 100%;
-          max-width: none;
+          width: 90%;
+          border: 1px solid #b2bec3;
+          background: rgba(223, 230, 233, 0.2);
+          padding: 3px;
+        }
+      }
+      .make__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        input {
+          padding: 8px;
+          background: #fff;
+          border: 1px solid #b2bec3;
+          &:hover {
+            background:  #dfe6e9;
+          }
         }
       }
     }

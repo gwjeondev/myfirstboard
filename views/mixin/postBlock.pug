@@ -1,17 +1,21 @@
-mixin postBlock(post={})
+mixin postBlock(board={})
     article.board
         .board__title
             span 제목
-            span 댓글
-            span 추천
             span 작성자
-            span 날짜
+            span 작성일
+            span 조회
         ul.board__list
             each post in board
                 li.board__post
                     a(href=routes.view(post.id))
-                        span=post.title
-                    span 4
-                    span 55
+                        span.board__post-title=post.title 
+                        span  (#{post.comments.length})
                     span=post.creator.name
                     span=post.createTime
+                    span=post.views
+        .board__makebtn
+            a(href=`${routes.post}${routes.make}`) 
+                span 
+                    i.fas.fa-pencil-alt
+                span  글쓰기

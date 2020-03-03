@@ -4,6 +4,4 @@ include ./mixin/postBlock
 block content
     section.home
         .home__container
-            .home__makebtn
-                a(href=`${routes.post}${routes.make}`) 글쓰기
-            +postBlock(post)
+            +postBlock(board)

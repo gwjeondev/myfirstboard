@@ -4,21 +4,44 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .board__title {
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    padding: 15px 0;
+  }
   .board__title,
   .board__post {
     width: 100%;
-    padding: 5px;
-    background: #74b9ff;
+    background: #fff;
     display: grid;
-    grid-template-columns: 450px 50px 50px 100px 100px;
+    grid-template-columns: 480px 100px 100px 70px;
     justify-items: center;
   }
   .board__list {
     width: 100%;
     .board__post {
       background: none;
-      padding: 5px;
-      border-bottom: 2px solid;
+      padding: 10px 0px;
+      border-bottom: 1px #b2bec3 solid;
+      .board__post-title {
+        &:hover {
+          color: #dfe6e9;
+        }
+      }
+      a {
+        span:last-child {
+          color: #ff7675;
+        }
+      }
+    }
+  }
+  .board__makebtn {
+    align-self: flex-end;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px #b2bec3 solid;
+    &:hover {
+      background:  #dfe6e9;
     }
   }
 }

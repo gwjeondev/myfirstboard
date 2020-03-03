@@ -13,6 +13,7 @@ import cookieParser from "cookie-parser";
 import homeRouter from "./routers/homeRouter";
 import postRouter from "./routers/postRouter";
 import userRouter from "./routers/userRouter";
+import apiRouter from "./routers/apiRouter";
 import "./passport";
 import { localMiddleWare, notPageError } from "./middleware";
 
@@ -44,6 +45,7 @@ app.use(localMiddleWare);
 app.use(routes.home, homeRouter);
 app.use(routes.post, postRouter);
 app.use(routes.user, userRouter);
+app.use(routes.api, apiRouter);
 
 app.use(notPageError);
 

@@ -10,10 +10,18 @@ const UserSchema = new mongoose.Schema({
     type: String,
     require: true
   },
-  comments: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Comment"
-  }
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post"
+    }
+  ],
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment"
+    }
+  ]
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "userid" });

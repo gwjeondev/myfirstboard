@@ -1,0 +1,23 @@
+.reply-form {
+  align-self: flex-end;
+  width: 100%;
+  display: flex;
+  padding: 0 0 10px 20px;
+  border-bottom: 1px #b2bec3 dotted;
+  form {
+    width: 100%;
+  }
+}
+.reply__list {
+    display: flex;
+    flex-direction: row !important;
+    .reply__inner {
+        width: 100%;
+    }
+}
+.arrow {
+    width: 10px;
+    height: 10px;
+    border-left: 1px rgba(255, 118, 117,1.0) solid; 
+    border-bottom: 1px rgba(255, 118, 117,1.0) solid; 
+}

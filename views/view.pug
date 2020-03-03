@@ -1,23 +1,45 @@
 extends ./layout/main
+include ./mixin/comment
 
 block content
     section.post
-        .post__container
+        .post__container#PostContainer
             .post__title
                 .post__title-top
                     .post__name
                         span=post.title
-                    .post__popular
-                        span 
-                            i.far.fa-heart  
-                            |  좋아요 3
-                        span
-                            i.far.fa-comment 
-                            |  댓글 4
+                    .post__createAt
+                        span=post.createTime
                 .post__title-bottom
-                    span=post.creator.name
-                    span=post.createTime
-            .post__content!=post.content
-            .post__func
-                a(href=`${routes.post}${routes.editBoard(post.id)}`) 수정
-                a(href=`${routes.post}${routes.delete(post.id)}`) 삭제
+                    .post__creator
+                        span=post.creator.name
+                        span (#{post.creator.userid})
+                    .post__address
+                        span=post.id
+            .post__content
+                span!=post.content
+            .post__popular
+                .post__comments
+                    i.far.fa-comment  
+                    span  댓글 
+                    span#CommentNumber=post.comments.length
+                .post__views
+                    span 조회수 #{post.views}
+                .post__likes
+                    span#PostLike
+                        span#PostLikeShape
+                            if like === -1
+                                i.far.fa-heart 
+                            else
+                                i.fas.fa-heart 
+                        span  좋아요 
+                        span#PostLikeNumber=post.likes
+                    if !loggedUser
+                        span#postLikeLoginCheck 로그인이 필요합니다.
+                span
+            .post__comment
+                +comments(post)
+            if loggedUser && post.creator.id.toString() === loggedUser.id
+                .post__func
+                    a(href=`${routes.post}${routes.editBoard(post.id)}`) 수정
+                    a(href=`${routes.post}${routes.delete(post.id)}`) 삭제

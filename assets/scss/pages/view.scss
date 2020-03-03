@@ -2,62 +2,77 @@
   width: 100%;
   .post__container {
     max-width: 750px;
+    border: 1px rgba(178, 190, 195, 1) solid;
     margin: 0 auto;
-    background: rgba(223, 230, 233, 0.2);
-    border-radius: 10px;
     padding: 15px 10px;
-    display: flex;
-    flex-direction: column;
     .post__title {
       display: flex;
       flex-direction: column;
       .post__title-top {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        padding: 0 0 10px 0;
+        margin-bottom: 10px;
+        border-bottom: 1px rgba(178, 190, 195, 1) dashed;
         .post__name {
-          font-size: 1.5rem;
+          font-size: 18px;
           font-weight: bold;
-        }
-        .post__popular {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: flex-end;
-          span:first-child {
-            margin-bottom: 7px;
-            i {
-              color: rgba(253, 121, 168, 1);
-            }
-          }
         }
       }
       .post__title-bottom {
-        border-bottom: 2px solid;
-        padding: 0 0 10px 0;
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        span:first-child {
-          margin-bottom: 8px;
-        }
-        span:last-child {
-          font-size: 0.8rem;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        .post__address {
+          font-size: 14px;
           opacity: 0.5;
         }
       }
     }
     .post__content {
-      margin: 20px 0;
-      background: #fff;
-      border-radius: 10px;
-      padding: 10px;
       line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .post__popular {
+      display: flex;
+      .post__comments,
+      .post__views {
+        border-right: 1px #b2bec3 solid;
+        padding: 0 5px 0 0;
+        margin-right: 8px;
+      }
+      .post__comments {
+      }
+      .post__views {
+      }
+      .post__likes {
+        cursor: pointer;
+        i {
+          color: rgba(214, 48, 49, 1);
+        }
+        #postLikeLoginCheck {
+          margin-left: 8px;
+          font-size: 12px;
+          opacity: 0.5;
+        }
+      }
     }
     .post__func {
+      margin: 0;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       a {
-        padding: 7px;
+        display: block;
+        padding: 8px;
+        border: 1px #b2bec3 solid;
+        &:first-child {
+          margin-right: 8px;
+        }
+        &:hover {
+          background: #dfe6e9;
+        }
       }
     }
   }
