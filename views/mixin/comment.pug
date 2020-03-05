@@ -19,12 +19,11 @@ mixin comments(post={})
                                             i.fas.fa-trash-alt
                             .comment__text
                                 span=comment.text
-                    if comment.childComment.length > 0
-                        +reply(comment.childComment)
+                    if comment.child.length > 0
+                        +reply(comment.child)
             form#CommentAdd
                 if loggedUser
                     textarea(placeholder="댓글 입력")#CommentInput
                 else 
                     textarea(placeholder="로그인이 필요합니다.", disabled)
                 input(type="submit" value="등록")
-                        

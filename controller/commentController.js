@@ -14,6 +14,7 @@ export const addComment = async (req, res) => {
     const comment = await Comment.create({
       text,
       creator: user.id,
+      post: post.id,
       createTime: getTime(new Date())
     });
     const sendComment = await Comment.findById(comment.id).populate("creator");
@@ -48,16 +49,17 @@ export const delComment = async (req, res) => {
 
 export const addReply = async (req, res) => {
   const { parentId, text } = req.body;
+  const { id } = req.params;
   try {
     const reply = await Comment.create({
       text,
       createTime: getTime(new Date()),
       creator: req.user.id,
-      creatorName: req.user.name,
-      parentComment: parentId
+      parent: parentId,
+      post: id
     });
     const parentReply = await Comment.findById(parentId);
-    parentReply.childComment.push(reply.id);
+    parentReply.child.push(reply);
     parentReply.save();
   } catch (error) {
   } finally {

@@ -1,7 +1,8 @@
 import routes from "../routes";
 import Post from "../models/Post";
+import Comment from "../models/Comment";
 import { getTime } from "./lib/getTime";
-import { recursiveComment } from "./lib/comment";
+import { convertToTrees } from "./lib/comment";
 
 export const getMake = (req, res) => {
   res.render("make");
@@ -20,6 +21,7 @@ export const postMake = async (req, res) => {
   }
   res.redirect(routes.home);
 };
+
 export const getPost = async (req, res) => {
   const { id } = req.params;
   let like;
@@ -32,12 +34,16 @@ export const getPost = async (req, res) => {
           path: "creator"
         }
       });
-    // 로그인 유저가 좋아요를 한지 안한지 체크
     if (req.user) {
       like = req.user.likes.indexOf(id);
     } else {
       like = -1;
     }
+    const comments = await Comment.find({ post: id })
+      .sort("createAt")
+      .populate("creator");
+    const tree = convertToTrees(comments, "_id", "parent", "child");
+    console.log(tree[0]);
     res.render("view", { pageTitle: "POST", post, like });
   } catch (error) {
     res.redirect(routes.home);

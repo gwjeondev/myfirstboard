@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 import { booleanLiteral } from "babel-types";
 
 const CommentSchema = new mongoose.Schema({
+  post: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Post"
+  },
   text: {
     type: String,
     require: true
@@ -18,17 +22,13 @@ const CommentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
   },
-  creatorName: {
-    type: String
-  },
-  parentComment: {
+  parent: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Comment"
   },
-  childComment: [
+  child: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment"
+      type: Object
     }
   ],
   exist: {
