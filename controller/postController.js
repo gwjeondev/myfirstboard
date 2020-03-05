@@ -26,14 +26,15 @@ export const getPost = async (req, res) => {
   const { id } = req.params;
   let like;
   try {
-    const post = await Post.findById(id)
-      .populate("creator")
-      .populate({
-        path: "comments",
-        populate: {
-          path: "creator"
-        }
-      });
+    // const post = await Post.findById(id)
+    //   .populate("creator")
+    //   .populate({
+    //     path: "comments",
+    //     populate: {
+    //       path: "creator"
+    //     }
+    //   });
+    const post = await Post.findById(id).populate("creator");
     if (req.user) {
       like = req.user.likes.indexOf(id);
     } else {
@@ -41,10 +42,11 @@ export const getPost = async (req, res) => {
     }
     const comments = await Comment.find({ post: id })
       .sort("createAt")
-      .populate("creator");
+      .populate({path: "creator", select: "name"});
     const tree = convertToTrees(comments, "_id", "parent", "child");
-    console.log(tree[0]);
-    res.render("view", { pageTitle: "POST", post, like });
+    console.log(tree);
+    // console.log(tree[0].child[0]);
+    res.render("view", { pageTitle: "POST", post, like, tree });
   } catch (error) {
     res.redirect(routes.home);
   }

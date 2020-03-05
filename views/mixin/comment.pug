@@ -1,26 +1,26 @@
 include ./reply
 
-mixin comments(post={})
+mixin comments(comment={})
     section.comment
         .comment__container#CommentContainer            
             ul.comment__area#CommentArea
-                each comment in post.comments.reverse()
-                    li.comment__list(id=comment.id)
+                each cmtItem in comment
+                    li.comment__list(id=cmtItem.id)
                         .commment__inner
                             .comment__title
                                 .comment__creator
-                                    span=comment.creator.name
-                                    span=comment.createTime
-                                if loggedUser && comment.creator.id.toString() === loggedUser.id
+                                    span=cmtItem.creator.name
+                                    span=cmtItem.createTime
+                                if loggedUser && cmtItem.creator._id.toString() === loggedUser.id
                                     .comment__btn
                                         span.comment__reply
                                             i.fas.fa-reply-all
                                         span.comment__delete
                                             i.fas.fa-trash-alt
                             .comment__text
-                                span=comment.text
-                    if comment.child.length > 0
-                        +reply(comment.child)
+                                span=cmtItem.text
+                    if cmtItem.child.length > 0
+                        +reply(cmtItem.child)
             form#CommentAdd
                 if loggedUser
                     textarea(placeholder="댓글 입력")#CommentInput

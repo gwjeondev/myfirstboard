@@ -38,7 +38,7 @@ block content
                         span#postLikeLoginCheck 로그인이 필요합니다.
                 span
             .post__comment
-                +comments(post)
+                +comments(tree)
             if loggedUser && post.creator.id.toString() === loggedUser.id
                 .post__func
                     a(href=`${routes.post}${routes.editBoard(post.id)}`) 수정

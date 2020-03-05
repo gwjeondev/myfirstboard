@@ -58,9 +58,6 @@ export const addReply = async (req, res) => {
       parent: parentId,
       post: id
     });
-    const parentReply = await Comment.findById(parentId);
-    parentReply.child.push(reply);
-    parentReply.save();
   } catch (error) {
   } finally {
     res.end();

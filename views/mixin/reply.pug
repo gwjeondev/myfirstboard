@@ -1,35 +1,35 @@
 mixin reply(reply={})
-    each cmt in reply.reverse()
+    each cmt in reply
+        li.reply__list(id=cmt._id)
+            .arrow
+            .reply__inner
+                .reply__title
+                    .reply__creator
+                        span=cmt.creator.name
+                        span=cmt.createTime
+                    if loggedUser && cmt.creator._id.toString() === loggedUser.id
+                        .reply__btn
+                            span.comment__reply
+                                i.fas.fa-reply-all
+                            span.comment__delete
+                                i.fas.fa-trash-alt
+                .reply__text
+                    span=cmt.text
         if cmt.child.length > 0
             +reply(cmt.child)
-                li.reply__list(id=comment._id)
-                    .arrow
-                    .reply__inner
-                        .reply__title
-                            .reply__creator
-                                span=cmt.creatorName
-                                span=cmt.createTime
-                            if loggedUser && cmt.creator.toString() === loggedUser.id
-                                .reply__btn
-                                    span.comment__reply
-                                        i.fas.fa-reply-all
-                                    span.comment__delete
-                                        i.fas.fa-trash-alt
-                        .reply__text
-                            span=cmt.text
-        else
-            li.reply__list(id=cmt._id)
-                .arrow
-                .reply__inner
-                    .reply__title
-                        .reply__creator
-                            span=cmt.creatorName
-                            span=cmt.createTime
-                        if loggedUser && cmt.creator.toString() === loggedUser.id
-                            .reply__btn
-                                span.comment__reply
-                                    i.fas.fa-reply-all
-                                span.comment__delete
-                                    i.fas.fa-trash-alt
-                    .reply__text
-                        span=cmt.text
+        //- else
+        //-     li.reply__list(id=cmt._id)
+        //-         .arrow
+        //-         .reply__inner
+        //-             .reply__title
+        //-                 .reply__creator
+        //-                     span=cmt.creator.name
+        //-                     span=cmt.createTime
+        //-                 if loggedUser && cmt.creator.id.toString() === loggedUser.id
+        //-                     .reply__btn
+        //-                         span.comment__reply
+        //-                             i.fas.fa-reply-all
+        //-                         span.comment__delete
+        //-                             i.fas.fa-trash-alt
+        //-             .reply__text
+        //-                 span=cmt.text
