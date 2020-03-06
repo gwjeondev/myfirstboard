@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import herokuselfping from "heroku-self-ping";
 import app from "./app";
 import "./db";
 import "./models/Post";
@@ -7,6 +8,7 @@ import "./models/User";
 
 dotenv.config();
 
+herokuselfping(`https://${process.env.HEROKU_APP_NAME}.herokuapp.com`);
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
