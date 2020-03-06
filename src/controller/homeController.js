@@ -8,6 +8,9 @@ export const home = async (req, res) => {
   const { page } = req.query;
   try {
     const totalPost = await Post.countDocuments({});
+    if (!totalPost) {
+      throw Error();
+    }
     let {
       startPage,
       endPage,

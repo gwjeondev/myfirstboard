@@ -3,7 +3,16 @@ import mongoose from "mongoose";
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL, {
+const GET_DB_URL = () => {
+  if(process.env.NODE_ENV = "production") {
+    return process.env.MONGO_URL_PROD;
+  }
+  return process.env.MONGO_URL;
+}
+
+const URL = GET_DB_URL();
+
+mongoose.connect(URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
