@@ -24,24 +24,54 @@
       padding: 10px 0px;
       border-bottom: 1px #b2bec3 solid;
       .board__post-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 450px;
+        margin-right: 5px;
         &:hover {
           color: #dfe6e9;
         }
       }
       a {
+        display: flex;
+        justify-self: start;
         span:last-child {
           color: #ff7675;
         }
       }
     }
   }
-  .board__makebtn {
-    align-self: flex-end;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px #b2bec3 solid;
-    &:hover {
-      background:  #dfe6e9;
+  .board__bottom {
+    width: 100%;
+    margin-top: 7px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    .board__page {
+      .pageBtn {
+        padding: 8px;
+        border: 1px solid;
+        border: 1px #b2bec3 solid;
+        &:hover {
+          background: rgba(76, 209, 55,.5);
+        }
+        &.current {
+          background: rgba(76, 209, 55,1.0);
+        }
+        &.disabled {
+          cursor: auto;
+          background: #dfe6e9;
+        }
+      }
+    }
+    .board__makebtn {
+      align-self: flex-end;
+      padding: 8px;
+      border: 1px #b2bec3 solid;
+      &:hover {
+        background: #dfe6e9;
+      }
     }
   }
 }

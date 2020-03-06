@@ -4,6 +4,7 @@ const LOGIN = "/login";
 const LOGOUT = "/logout";
 const USER = "/user";
 const EDITPROFILE = "/edit-profile";
+const CHANGEPASSWORD = "/change-password";
 const POST = "/post";
 const MAKE = "/make";
 const VIEW = "/:id";
@@ -24,6 +25,7 @@ const routes = {
   logout: LOGOUT,
   user: USER,
   editProfile: EDITPROFILE,
+  changePassword: CHANGEPASSWORD,
   post: POST,
   make: MAKE,
   view: id => (id ? `/post/${id}` : VIEW),

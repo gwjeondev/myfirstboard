@@ -18,6 +18,10 @@
         .post__name {
           font-size: 18px;
           font-weight: bold;
+          max-width: 600px;
+        }
+        .post__createAt {
+          white-space: nowrap;
         }
       }
       .post__title-bottom {

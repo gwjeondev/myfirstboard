@@ -1,6 +1,5 @@
 import Comment from "../models/Comment";
 import Post from "../models/Post";
-import User from "../models/User";
 import { getTime } from "./lib/getTime";
 
 export const addComment = async (req, res) => {
@@ -31,15 +30,11 @@ export const addComment = async (req, res) => {
 };
 
 export const delComment = async (req, res) => {
-  const { postId, commentId } = req.body;
+  const { commentId } = req.body;
   try {
-    const post = await Post.findById(postId);
-    const user = req.user;
-    await Comment.deleteOne({ _id: commentId });
-    post.comments = post.comments.filter(i => i.toString() !== commentId);
-    user.comments = user.comments.filter(i => i.toString() !== commentId);
-    post.save();
-    user.save();
+    const comment = await Comment.findById(commentId);
+    comment.exist = false;
+    comment.save();
   } catch (error) {
     res.status(400);
   } finally {
@@ -51,6 +46,7 @@ export const addReply = async (req, res) => {
   const { parentId, text } = req.body;
   const { id } = req.params;
   try {
+    const user = req.user;
     const reply = await Comment.create({
       text,
       createTime: getTime(new Date()),
@@ -58,6 +54,22 @@ export const addReply = async (req, res) => {
       parent: parentId,
       post: id
     });
+    const sendReply = await Comment.findById(reply.id)
+      .populate({ path: "creator", select: "name" })
+      .populate({
+        path: "parent",
+        select: "creator",
+        populate: {
+          path: "creator",
+          select: "name"
+        }
+      });
+    const post = await Post.findById(id);
+    post.comments.push(reply.id);
+    user.comments.push(reply.id);
+    post.save();
+    user.save();
+    res.send(sendReply);
   } catch (error) {
   } finally {
     res.end();

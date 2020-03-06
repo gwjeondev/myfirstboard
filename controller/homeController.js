@@ -2,14 +2,28 @@ import passport from "passport";
 import routes from "../routes";
 import Post from "../models/Post";
 import User from "../models/User";
-import { getTime } from "./lib/getTime";
+import paging from "./lib/paging";
 
 export const home = async (req, res) => {
+  const { page } = req.query;
   try {
+    const totalPost = await Post.countDocuments({});
+    const {startPage, endPage, hidePost, maxPost, totalPage, currentPage} = paging(page, totalPost);
     const board = await Post.find({})
       .sort({ createAt: -1 })
-      .populate("creator");
-    res.render("home", { pageTitle: "HOME", board });
+      .populate("creator")
+      .populate({ path: "comments", select: "exist" })
+      .skip(hidePost)
+      .limit(maxPost);
+    res.render("home", {
+      pageTitle: "HOME",
+      board,
+      currentPage,
+      startPage,
+      endPage,
+      maxPost,
+      totalPage
+    });
   } catch (error) {
     res.render("home", { pageTitle: "HOME", board: [] });
   }
@@ -42,10 +56,13 @@ export const getLogin = (req, res) => {
 
 export const postLogin = passport.authenticate("local", {
   successRedirect: "/",
-  failureRedirect: "/login"
+  failureRedirect: "/login",
+  successFlash: "로그인 성공",
+  failureFlash: "아이디 또는 비밀번호를 확인하세요"
 });
 
 export const logout = (req, res) => {
   req.logout();
+  req.flash("success", "로그아웃 성공");
   res.redirect(routes.home);
 };

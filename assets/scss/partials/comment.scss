@@ -44,11 +44,13 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 10px;
-        // background: rgba(255, 255, 255, 0.7);
-        // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
         border-bottom: 1px #b2bec3 dotted;
         .comment__inner {
           width: 100%;
+        }
+        .text-delete {
+          font-size: 14px;
+          color: #ff7675;
         }
         .comment__title,
         .reply__title {

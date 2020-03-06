@@ -13,6 +13,21 @@
     flex-direction: row !important;
     .reply__inner {
         width: 100%;
+        .reply__text {
+          font-size: 14px;
+          span:first-child {
+            margin-right: 3px;
+          }
+          span:first-child,
+          span:nth-child(2){
+            opacity: .5;
+          }
+          span:nth-child(2) {
+            font-size: 10px;
+            color: #74b9ff;
+            margin-right: 7px;
+          }
+        }
     }
 }
 .arrow {

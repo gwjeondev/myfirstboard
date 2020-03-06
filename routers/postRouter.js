@@ -9,14 +9,15 @@ import {
   Delete,
   getPost
 } from "../controller/postController";
+import { userPrivate, localPrivate } from "../middleware";
 
 const postRouter = express.Router();
 
-postRouter.get(routes.make, getMake);
-postRouter.post(routes.make, postMake);
+postRouter.get(routes.make, localPrivate, getMake);
+postRouter.post(routes.make, localPrivate, postMake);
 postRouter.get(routes.view(), getPost);
-postRouter.get(routes.editBoard(), getEdit);
-postRouter.post(routes.editBoard(), postEdit);
-postRouter.get(routes.delete(), Delete);
+postRouter.get(routes.editBoard(), localPrivate, getEdit);
+postRouter.post(routes.editBoard(), localPrivate, postEdit);
+postRouter.get(routes.delete(), localPrivate, Delete);
 
 export default postRouter;

@@ -1,22 +1,33 @@
 mixin reply(reply={})
-    each cmt in reply
-        li.reply__list(id=cmt._id)
+    each cmtItem in reply
+        li.reply__list(id=cmtItem._id)
             .arrow
             .reply__inner
                 .reply__title
                     .reply__creator
-                        span=cmt.creator.name
-                        span=cmt.createTime
-                    if loggedUser && cmt.creator._id.toString() === loggedUser.id
+                        span=cmtItem.creator.name
+                        span=cmtItem.createTime
+                    if cmtItem.exist
                         .reply__btn
-                            span.comment__reply
-                                i.fas.fa-reply-all
-                            span.comment__delete
-                                i.fas.fa-trash-alt
-                .reply__text
-                    span=cmt.text
-        if cmt.child.length > 0
-            +reply(cmt.child)
+                            if loggedUser
+                                span.comment__reply
+                                    i.fas.fa-reply-all
+                            if loggedUser && cmtItem.creator.id.toString() === loggedUser.id
+                                span.comment__delete
+                                    i.fas.fa-trash-alt
+                    else
+                        .reply__btn
+                if cmtItem.exist
+                    .reply__text
+                        span=cmtItem.parent.creator.name
+                        span
+                            i.fas.fa-reply
+                        span=cmtItem.text
+                else
+                    .text-delete
+                        span 삭제 된 댓글 입니다.
+        if cmtItem.child.length > 0
+            +reply(cmtItem.child)
         //- else
         //-     li.reply__list(id=cmt._id)
         //-         .arrow
@@ -25,11 +36,14 @@ mixin reply(reply={})
         //-                 .reply__creator
         //-                     span=cmt.creator.name
         //-                     span=cmt.createTime
-        //-                 if loggedUser && cmt.creator.id.toString() === loggedUser.id
-        //-                     .reply__btn
-        //-                         span.comment__reply
-        //-                             i.fas.fa-reply-all
+        //-                 .reply__btn
+        //-                     span.comment__reply
+        //-                         i.fas.fa-reply-all
+        //-                     if loggedUser && cmt.creator.id.toString() === loggedUser.id
         //-                         span.comment__delete
         //-                             i.fas.fa-trash-alt
         //-             .reply__text
+        //-                 span=cmt.parent.creator.name
+        //-                 span
+        //-                     i.fas.fa-reply
         //-                 span=cmt.text

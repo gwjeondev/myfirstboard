@@ -6,19 +6,27 @@ mixin comments(comment={})
             ul.comment__area#CommentArea
                 each cmtItem in comment
                     li.comment__list(id=cmtItem.id)
-                        .commment__inner
+                        .comment__inner
                             .comment__title
                                 .comment__creator
                                     span=cmtItem.creator.name
                                     span=cmtItem.createTime
-                                if loggedUser && cmtItem.creator._id.toString() === loggedUser.id
+                                if cmtItem.exist
                                     .comment__btn
-                                        span.comment__reply
-                                            i.fas.fa-reply-all
-                                        span.comment__delete
-                                            i.fas.fa-trash-alt
-                            .comment__text
-                                span=cmtItem.text
+                                        if loggedUser
+                                            span.comment__reply
+                                                i.fas.fa-reply-all
+                                        if loggedUser && cmtItem.creator.id.toString() === loggedUser.id
+                                            span.comment__delete
+                                                i.fas.fa-trash-alt
+                                else
+                                    .comment__btn
+                            if cmtItem.exist
+                                .comment__text
+                                    span=cmtItem.text
+                            else
+                                .text-delete
+                                    span 삭제 된 댓글 입니다.
                     if cmtItem.child.length > 0
                         +reply(cmtItem.child)
             form#CommentAdd

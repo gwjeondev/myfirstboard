@@ -1,5 +1,5 @@
 mixin postBlock(board={})
-    article.board
+    .board
         .board__title
             span 제목
             span 작성자
@@ -10,12 +10,33 @@ mixin postBlock(board={})
                 li.board__post
                     a(href=routes.view(post.id))
                         span.board__post-title=post.title 
-                        span  (#{post.comments.length})
+                        span  (#{post.comments.filter(item => item.exist).length})
                     span=post.creator.name
                     span=post.createTime
                     span=post.views
-        .board__makebtn
-            a(href=`${routes.post}${routes.make}`) 
-                span 
-                    i.fas.fa-pencil-alt
-                span  글쓰기
+        .board__bottom
+            .board__page
+                if startPage > maxPost
+                    a.prev_btn.pageBtn(href=`${routes.home}?page=${startPage-1}`)
+                        i.fas.fa-angle-double-left
+                else
+                    a.prev_btn.pageBtn.disabled(href="javascript:void(0);")
+                        i.fas.fa-angle-double-left
+                - for (let i = startPage; i <= endPage ; i++)
+                    if i === currentPage
+                        a.pageBtn.current(href=`${routes.home}?page=${i}`)
+                            span=i
+                    else
+                        a.pageBtn(href=`${routes.home}?page=${i}`)
+                            span=i       
+                if endPage < totalPage
+                    a.next_btn.pageBtn(href=`${routes.home}?page=${endPage+1}`)
+                        i.fas.fa-angle-double-right
+                else
+                    a.next_btn.pageBtn.disabled(href="javascript:void(0);")
+                        i.fas.fa-angle-double-right
+            .board__makebtn
+                a(href=`${routes.post}${routes.make}`) 
+                    span 
+                        i.fas.fa-pencil-alt
+                    span  글쓰기

@@ -22,7 +22,7 @@ block content
                 .post__comments
                     i.far.fa-comment  
                     span  댓글 
-                    span#CommentNumber=post.comments.length
+                    span#CommentNumber=post.comments.filter(item => item.exist).length
                 .post__views
                     span 조회수 #{post.views}
                 .post__likes

@@ -1,3 +1,5 @@
+include ../mixin/flashMessage
+
 <!DOCTYPE html>
 html(lang="en")
     head
@@ -11,6 +13,16 @@ html(lang="en")
         script(src="https://kit.fontawesome.com/b6783caecc.js" crossorigin="anonymous")
         title #{siteName} | #{pageTitle}
     body
+        if messages.success
+            +flashMessage({
+                type: "success",
+                text: messages.success
+            })
+        else if messages.error
+            +flashMessage({
+                type: "error",
+                text: messages.error
+            })
         include ../partials/header
         main
             block content
