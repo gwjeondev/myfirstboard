@@ -1,4 +1,5 @@
 const HOME = "/";
+const SEARCH = "/search";
 const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
@@ -20,6 +21,7 @@ const DEL_REPLY = "/:id/reply-delete";
 
 const routes = {
   home: HOME,
+  search: SEARCH,
   join: JOIN,
   login: LOGIN,
   logout: LOGOUT,

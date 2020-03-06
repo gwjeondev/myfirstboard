@@ -4,8 +4,8 @@ header
             a(href=routes.home)
                 span NAVER
         .header__column
-            form
-                input(type="text" placeholder="게시글을 검색하세요")#SearchPost
+            form(action=routes.search method="get")
+                input(type="text" name="term" placeholder="게시글을 검색하세요")#SearchPost
         .header__column
             ul
                 if !loggedUser

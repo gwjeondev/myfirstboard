@@ -2,17 +2,25 @@ import express from "express";
 import routes from "../routes";
 import {
   home,
+  search,
   getJoin,
   postJoin,
   getLogin,
   postLogin,
-  logout
+  logout,
 } from "../controller/homeController";
 import { userPrivate, localPrivate } from "../middleware";
 
 const homeRouter = express.Router();
 
 homeRouter.get(routes.home, home);
+homeRouter.get(
+  routes.search,
+  (req, res, next) => {
+    next();
+  },
+  search
+);
 homeRouter.get(routes.join, userPrivate, getJoin);
 homeRouter.post(routes.join, userPrivate, postJoin, postLogin);
 homeRouter.get(routes.login, userPrivate, getLogin);

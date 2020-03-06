@@ -4,9 +4,14 @@
   "description": "나의 첫번째 게시판 만들기",
   "main": "init.js",
   "scripts": {
-    "dev:assets": "webpack --mode=development -w",
-    "bulid:assets": "webpack --mode=production",
-    "start": "nodemon --delay 2 --exec babel-node init.js"
+    "dev:server": "nodemon --delay 2 --exec babel-node src/init.js",
+    "dev:assets": "cd src && webpack --mode=development -w",
+    "build:assets": "cd src && webpack --mode=production",
+    "build:server": "babel src --out-dir build --ignore 'src/static','src/assets','src/webpack.config.js'",
+    "copyAll": "cp -R src/static build && cp -R src/views build",
+    "prebuild": "rm -rf build",
+    "build": "npm run build:server && npm run build:assets && npm run copyAll",
+    "start": "node build/init.js"
   },
   "keywords": [],
   "author": "",

@@ -8,7 +8,14 @@ export const home = async (req, res) => {
   const { page } = req.query;
   try {
     const totalPost = await Post.countDocuments({});
-    const {startPage, endPage, hidePost, maxPost, totalPage, currentPage} = paging(page, totalPost);
+    let {
+      startPage,
+      endPage,
+      hidePost,
+      maxPost,
+      totalPage,
+      currentPage
+    } = paging(page, totalPost);
     const board = await Post.find({})
       .sort({ createAt: -1 })
       .populate("creator")
@@ -22,10 +29,53 @@ export const home = async (req, res) => {
       startPage,
       endPage,
       maxPost,
-      totalPage
+      totalPage,
+      index: "home"
     });
   } catch (error) {
     res.render("home", { pageTitle: "HOME", board: [] });
+  }
+};
+
+export const search = async (req, res) => {
+  const { term, page } = req.query;
+  try {
+    const totalPost = await Post.countDocuments({
+      title: { $regex: term, $options: "i" }
+    });
+    if (!totalPost) {
+      res.render("emptySearch", { pageTitle: "EMPTY" });
+      return 0;
+    }
+    const {
+      startPage,
+      endPage,
+      hidePost,
+      maxPost,
+      totalPage,
+      currentPage
+    } = paging(page, totalPost);
+    const board = await Post.find({
+      title: { $regex: term, $options: "i" }
+    })
+      .sort({ createAt: -1 })
+      .populate("creator")
+      .populate({ path: "comments", select: "exist" })
+      .skip(hidePost)
+      .limit(maxPost);
+    res.render("home", {
+      pageTitle: "SEARCH",
+      term,
+      board,
+      currentPage,
+      startPage,
+      endPage,
+      maxPost,
+      totalPage,
+      index: "post"
+    });
+  } catch (error) {
+    res.redirect(routes.home);
   }
 };
 

@@ -1,5 +1,5 @@
 const paging = (page, totalPost) => {
-  const maxPost = 1;
+  const maxPost = 5;
   const maxPage = 5;
   let currentPage = page ? parseInt(page) : 1;
   const hidePost = page === 1 ? 0 : (page - 1) * maxPost;

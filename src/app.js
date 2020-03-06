@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
@@ -27,6 +28,7 @@ const CookieStore = MongoStore(session);
 app.use(helmet());
 app.use(morgan("dev"));
 app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 app.use("/static", express.static(path.join(__dirname, "static")));
 app.use(cookieParser());
 app.use(bodyParser.json());
