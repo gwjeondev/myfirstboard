@@ -4,6 +4,7 @@
 ![home](https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/home.png)
 
 웹사이트 : https://my-first-board.herokuapp.com/
+호스팅 : Heroku
 
 
 ## 프로젝트 소개
