@@ -5,14 +5,31 @@
 
 웹사이트 : https://my-first-board.herokuapp.com/
 
-- - -
 
 ## 프로젝트 소개
 
 네이버 디자인을 살짝 모방한 게시판 프로젝트 입니다.
-- - -
 
-## 웹사이트 화면 및 기능 설명
+
+## 기술 스택
+- 백엔드: Node JS Express
+- 프론트엔드: Vanila JS
+- 데이터베이스: Mongo DB
+- 인증: Passport JS
+- 템플릿: Pug
+- 스타일: SCSS
+
+
+## 구현 기능
+- 로컬 로그인
+- 검색
+- 게시글 업로드
+- 게시글 페이징
+- 게시글 조회수 및 좋아요
+- 댓글 및 답글
+
+
+## 웹사이트 화면
 |홈|
 |----|
 |![home](https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/home.png)|
@@ -48,4 +65,3 @@
 |게시글 검색|
 |----|
 |![home](https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/search.png)|
-
