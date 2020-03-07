@@ -13,8 +13,15 @@
 - - -
 
 ## 웹사이트 화면
-|HOME|JOIN|LOGIN|
+|Home|Join|Login|
 |----|----|-----|
 |<img src="https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/home.png" width="300px" height="300px" alt="home"></img><br/>|<img src="https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/join.png" width="300px" height="300px" alt="home"></img><br/>|<img src="https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/login.png" width="300px" height="300px" alt="home"></img><br/>|
 
+|Change Password|User Edit|View|
+|----|----|-----|
+|<img src="https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/user_change_password.png" width="300px" height="300px" alt="home"></img><br/>|<img src="https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/user_edit.png" width="300px" height="300px" alt="home"></img><br/>|<img src="https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/post_views.png" width="300px" height="300px" alt="home"></img><br/>|
+
+|Search|Create|Update|
+|----|----|-----|
+|<img src="https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/search.png" width="300px" height="300px" alt="home"></img><br/>|<img src="https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/create.png" width="300px" height="300px" alt="home"></img><br/>|<img src="https://raw.githubusercontent.com/won-developer/myfirstboard/master/images/update.png" width="300px" height="300px" alt="home"></img><br/>|
 - - - 
