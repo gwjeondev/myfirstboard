@@ -4,8 +4,8 @@ block content
     .join
         .form-container
             form(action=`${routes.join}` method="post")
-                input(type="text" name="userid" placeholder="아이디를 입력" required="true")
-                input(type="text" name="name" placeholder="이름을 입력" required="true")
-                input(type="password" name="password" placeholder="비밀번호를 입력" required="true")
-                input(type="password" name="password2" placeholder="비밀번호를 다시 입력" required="true")
+                input(type="text" name="userid" placeholder="아이디를 입력" required="true", disabled)
+                input(type="text" name="name" placeholder="이름을 입력" required="true", disabled)
+                input(type="password" name="password" placeholder="비밀번호를 입력" required="true", disabled)
+                input(type="password" name="password2" placeholder="비밀번호를 다시 입력" required="true", disabled)
                 input(type="submit" value="가입")
